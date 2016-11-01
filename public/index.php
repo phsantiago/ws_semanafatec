@@ -1,19 +1,25 @@
 <?php
+
+	header('Content-Type: application/json');
+
 	if (session_status() == PHP_SESSION_NONE) {
 	    session_start();
-		$_SESSION['start'] = time(); 
-		$_SESSION['expire'] = $_SESSION['start'] + (2 * 60);
 	}
 
+	if (!isset($_SESSION['start'])) {
 
+		$_SESSION['start'] = time();
 
-    if(time() > $_SESSION['expire']){
+	}
+
+    if($_SESSION['start'] + 10 < time()){
 
 		echo json_encode( array('sessao' => 'expirada' ) );	
+		$_SESSION = array();
     	session_destroy();
 
     }else{
 
-		echo json_encode( array('sessao' => $_SESSION['start'] - $_SESSION['expire'] . 'ms restante' ) );	
+		echo json_encode( array('sessao' => $_SESSION['start'] + 10 - time() . 'ms restante' ) );	
 
     }
