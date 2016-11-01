@@ -1,20 +1,18 @@
 <?php
 	if (session_status() == PHP_SESSION_NONE) {
 	    session_start();
+		$_SESSION['start'] = time(); 
+    	$_SESSION['expire'] = $_SESSION['start'] + (2 * 60);
 	}
 
-	$inactive = 300; 
-	
-	$session_life = time() - $_SESSION['timeout'];
-	echo '<pre>'; print_r($_SESSION); echo '</pre>';
-	if($session_life > $inactive) {  
-		
-		echo json_encode( array('sessao' => 'expirada' ) );	
-	    session_destroy();   
-	
-	} else {
 
-	    $_SESSION['timeout']=time();
+
+    if(time() > $_SESSION['expire']){
+
+		echo json_encode( array('sessao' => 'expirada' ) );	
+    
+    }else{
+
 		echo json_encode( array('sessao' => $_SESSION['timeout'] . 'ms restante' ) );	
 
-	}
+    }
