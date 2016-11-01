@@ -2,10 +2,10 @@
 	if (session_status() == PHP_SESSION_NONE) {
 	    session_start();
 		$_SESSION['start'] = time(); 
-    	$_SESSION['expire'] = $_SESSION['start'] + (2 * 60);
 	}
 
 
+	$_SESSION['expire'] = $_SESSION['start'] + (2 * 60);
 
     if(time() > $_SESSION['expire']){
 
@@ -13,6 +13,6 @@
     
     }else{
 
-		echo json_encode( array('sessao' => $_SESSION['timeout'] . 'ms restante' ) );	
+		echo json_encode( array('sessao' => $_SESSION['expire'] . 'ms restante' ) );	
 
     }
