@@ -2,19 +2,23 @@
 >
 
 <html>
-	<head></head>
+	<head>
+		<meta name="viewport" content="width=device-width">
+	</head>
 	<body>
-		<a href="zxing://scan/?ret=#ret={CODE}"> 
-		    <span>My scan TEST</span>
-		</a>
+		<!-- <a href="zxing://scan/?ret=#ret={CODE}">  -->
+		    <button onClick="getScan()">My scan TEST</button>
+		<!-- </a> -->
 		<script type="text/javascript">
-				var href = window.location.href;
-			    var ptr = href.lastIndexOf("#");
-			    if (ptr > 0) {
-			        href = href.substr(0, ptr);
-			    }
-			    //setTimeout(function(){gettingZXing = false}, 20000);// in case you cancel, or an error occurs.
-			    window.location.href = ("zxing://scan/?ret=" + escape(href + "#zx{CODE}"));
+				function getScan(){
+				    var href=window.location.href;//works
+				    var ptr=href.lastIndexOf("#");
+				    if(ptr>0){
+				        href=href.substr(0,ptr);
+				    }
+				      window.location.href="zxing://scan/?ret="+escape(href+"#{CODE}");
+
+				}
 		</script>
 	</body>
 </html>
