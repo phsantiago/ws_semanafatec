@@ -1,3 +1,7 @@
+<?php 
+  if (!defined('BASE_PATH'))
+    die();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,17 +81,21 @@
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
+    console.log('Olá!  Te procurando... ');
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
+      console.log('Entrou como: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        'Olá, ' + response.name + '!';
     });
-    FB.api('/me/picture', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+    FB.api('/me/picture?type=large', function(response) {
+      document.getElementById('picture').src = response.data.url;
     });
+  }
+
+  function doLogin(){
+  	FB.login(function(response) {
+  	  checkLoginState();
+  	}, {scope: 'public_profile,email'});
   }
 </script>
 
@@ -97,11 +105,14 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<button onClick="doLogin();">
+	LOGIN FACEBOOK
+</button>
 
 <div id="status">
 </div>
+
+<img src="" id="picture" alt="">
 
 </body>
 </html>

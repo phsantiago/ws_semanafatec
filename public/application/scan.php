@@ -1,3 +1,7 @@
+<?php 
+  if (!defined('BASE_PATH'))
+    die();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,7 +9,7 @@
 	</head>
 	<body>
 		<!-- <a href="zxing://scan/?ret=#ret={CODE}">  -->
-		    <button onClick="readBarcode()">My scan TEST</button>
+		    <button onClick="readBarcode()">LER CODIGO</button>
 		<!-- </a> -->
 		<script type="text/javascript">
 			function readBarcode(){

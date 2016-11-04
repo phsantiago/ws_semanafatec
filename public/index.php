@@ -1,27 +1,16 @@
 <?php
-
-	header('Content-Type: application/json');
-
-	if (session_status() == PHP_SESSION_NONE) {
-	    session_start();
+	
+	define('BASE_PATH', __DIR__.'/');
+	
+	function geturl($location){
+		if (preg_match($location, substr($_SERVER['REQUEST_URI'], 1))) {
+			return true;
+		}
+		return false;
 	}
 
-	if (!isset($_SESSION['start'])) {
-
-		$_SESSION['start'] = time();
-
+	if (geturl('/^scan/')) {
+		include 'application/scan.php';
+	}else{
+		include 'application/login.php';
 	}
-
-    if($_SESSION['start'] + 10 < time()){
-
-		echo json_encode( array('sessao' => 'expirada', 
-								'your_get' => $_GET ) );	
-		$_SESSION = array();
-    	session_destroy();
-
-    }else{
-
-		echo json_encode( array('sessao' => $_SESSION['start'] + 10 - time() . 'ms restante', 
-								'your_get' => $_GET ) );	
-
-    }
