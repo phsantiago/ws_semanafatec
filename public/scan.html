@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<script type="text/javascript">
-		var href = window.location.href;
-	    var ptr = href.lastIndexOf("#");
-	    if (ptr > 0) {
-	        href = href.substr(0, ptr);
-	    }
-	    //setTimeout(function(){gettingZXing = false}, 20000);// in case you cancel, or an error occurs.
-	    window.location.href = ("zxing://scan/?ret=" + escape(href + "#zx{CODE}"));
+>
 
-//	window.location.href = ("zxing://scan/?ret=" + escape(href + "#zx{CODE}"));
-</script>
-
-<!-- <html>
+<html>
 	<head></head>
 	<body>
 		<a href="zxing://scan/?ret=#ret={CODE}"> 
 		    <span>My scan TEST</span>
 		</a>
+		<script type="text/javascript">
+				var href = window.location.href;
+			    var ptr = href.lastIndexOf("#");
+			    if (ptr > 0) {
+			        href = href.substr(0, ptr);
+			    }
+			    //setTimeout(function(){gettingZXing = false}, 20000);// in case you cancel, or an error occurs.
+			    window.location.href = ("zxing://scan/?ret=" + escape(href + "#zx{CODE}"));
+		</script>
 	</body>
-</html> -->
+</html>
