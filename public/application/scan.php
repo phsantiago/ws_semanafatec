@@ -13,10 +13,12 @@
 		    <span id="code"></span>
 		<!-- </a> -->
 		<script type="text/javascript">
+			if (href.split('#').length > 1) {
+				document.getElementById('code').innerHTML = href.split('#')[1];
+			};
 			function readBarcode(){
 				
 				var href=window.location.href;//works
-				document.getElementById('code').innerHTML = href.split('#')[1];
 				var ptr=href.lastIndexOf("#");
 				
 				if(ptr>0){
