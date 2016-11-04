@@ -10,6 +10,7 @@
 	<body>
 		<!-- <a href="zxing://scan/?ret=#ret={CODE}">  -->
 		    <button onClick="readBarcode()">LER CODIGO</button>
+		    <span id="code"></span>
 		<!-- </a> -->
 		<script type="text/javascript">
 			function readBarcode(){
@@ -23,6 +24,8 @@
 				}
 
 				window.location.href="zxing://scan/?ret="+escape(href+"#{CODE}");
+
+				document.getElementById('code').innerHTML = window.location.href;
 			}
 		</script>
 	</body>
