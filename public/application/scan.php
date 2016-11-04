@@ -10,7 +10,7 @@
 	<body>
 		<!-- <a href="zxing://scan/?ret=#ret={CODE}">  -->
 		    <button onClick="readBarcode()">LER CODIGO</button>
-		    <span id="code"><?php echo htmlspecialchars_decode($_GET['code']); ?></span>
+		    <span id="code"><?php echo html_entity_decode($_GET['code']); ?></span>
 		<!-- </a> -->
 		<script type="text/javascript">
 			function readBarcode(){
