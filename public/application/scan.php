@@ -16,16 +16,16 @@
 			function readBarcode(){
 				
 				var href=window.location.href;//works
-				
+				document.getElementById('code').innerHTML = href.split('#')[1];
 				var ptr=href.lastIndexOf("#");
 				
 				if(ptr>0){
 					href=href.substr(0,ptr);
 				}
 
-				window.location.hash="zxing://scan/?ret="+escape(href+"#{CODE}");
+				window.location.href="zxing://scan/?ret="+escape(href+"#{CODE}");
 
-				document.getElementById('code').innerHTML = window.location.hash;
+
 			}
 		</script>
 	</body>
