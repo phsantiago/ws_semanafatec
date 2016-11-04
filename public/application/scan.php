@@ -23,9 +23,9 @@
 					href=href.substr(0,ptr);
 				}
 
-				window.location.href="zxing://scan/?ret="+escape(href+"#{CODE}");
+				window.location.hash="zxing://scan/?ret="+escape(href+"#{CODE}");
 
-				document.getElementById('code').innerHTML = window.location.href;
+				document.getElementById('code').innerHTML = window.location.hash;
 			}
 		</script>
 	</body>
