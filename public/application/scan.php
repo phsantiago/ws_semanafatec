@@ -10,12 +10,9 @@
 	<body>
 		<!-- <a href="zxing://scan/?ret=#ret={CODE}">  -->
 		    <button onClick="readBarcode()">LER CODIGO</button>
-		    <span id="code"></span>
+		    <span id="code"><?php echo htmlspecialchars_decode($_GET['code']); ?></span>
 		<!-- </a> -->
 		<script type="text/javascript">
-			if (href.split('#').length > 1) {
-				document.getElementById('code').innerHTML = href.split('#')[1];
-			};
 			function readBarcode(){
 				
 				var href=window.location.href;//works
@@ -25,7 +22,8 @@
 					href=href.substr(0,ptr);
 				}
 
-				window.location.href="zxing://scan/?ret="+escape(href+"#{CODE}");
+				window.location.href="zxing://scan/?ret="+escape(href+"?code={CODE}");
+
 
 
 			}
